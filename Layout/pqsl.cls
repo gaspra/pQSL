@@ -1,11 +1,11 @@
-\ProvidesClass{pqsl}
+\ProvidesClass{pqsl}[2015/06/07 Printed QSL Cards]
 \LoadClassWithOptions{article}
 
 \pagestyle{empty}
 \usepackage{graphicx}
 \usepackage{amsmath}
 %\usepackage{fontspec}
-\usepackage[papersize={14.8cm,10.5cm}, margin=0.0cm, marginratio=1:1]{geometry}
+\usepackage[margin=0.0cm, marginratio=1:1]{geometry}
 
 
 \setlength{\parindent}{0cm}
@@ -61,14 +61,14 @@
 	\hfill
 	%%%BEGIN Right upper Minipage with QSO and Via Fields 
 	\begin{minipage}{5.5cm} % very ugly hack with \vphantom ;)
-	\framebox[5.5cm][l]{\scriptsize QSO WITH: \vphantom{$\rule[-1mm]{0mm}{6mm}$} \bf \Large{\@CALL}}
+	\framebox[5cm][l]{\scriptsize QSO WITH: \vphantom{$\rule[-1mm]{0mm}{6mm}$} \bf \Large{\@CALL}}
 	\smallskip
-	\framebox[5.5cm][l]{\scriptsize VIA:\hspace{10mm} \vphantom{$\rule[-1mm]{0mm}{6mm}$} \bf \Large{\@VIA}}
+	\framebox[5cm][l]{\scriptsize VIA:\hspace{10mm} \vphantom{$\rule[-1mm]{0mm}{6mm}$} \bf \Large{\@VIA}}
 	\end{minipage}
 	%%%END Right upper Minipage with QSO and Via Fields 
 	\hspace{0.5cm}
 
-	\vspace{1.5cm}
+	\vspace{0.5cm}
 
 	\hspace{0.5cm}I am pleased to confirm the following QSO:
 	\topsep3pt
@@ -109,6 +109,14 @@
 
 \newcommand\qslcard\@qslcardbothsides
 
+
+\DeclareOption{testsize1}{
+  \geometry{paperwidth=14.8cm, paperheight=10.5cm}
+}
+
+\DeclareOption{testsize2}{
+  \geometry{paperwidth=13.8cm, paperheight=9cm}
+}
 
 \DeclareOption{front}{
 	\renewcommand\qslcard\@qslcardfront

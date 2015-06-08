@@ -7,11 +7,12 @@ then
 	  ./adif2contacts.pl < $2 > ./contacts.tex
     export TEXINPUTS=.:./Layout//:
     xelatex Layout/A4_4cards/qsl.tex &&
-    xelatex Layout/A4_4cards/qsl-back.tex &&
-    xelatex Layout/A4_4cards/qsl-front.tex &&
-    xelatex Layout/A4_4cards/printA4-front.tex &&
-    xelatex Layout/A4_4cards/printA4-back.tex &&
-    rm *.aux *.log contacts.tex
+#    xelatex Layout/A4_4cards/qsl-back.tex &&
+#    xelatex Layout/A4_4cards/qsl-front.tex &&
+#    xelatex Layout/A4_4cards/printA4-front.tex &&
+#    xelatex Layout/A4_4cards/printA4-back.tex &&
+#    rm *.aux *.log contacts.tex
+    rm *.aux *.log
   fi
-  rm config.tex
+#  rm config.tex
 fi
