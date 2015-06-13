@@ -1,14 +1,16 @@
-\ProvidesClass{pqsl}[2015/06/07 Printed QSL Cards]
-\LoadClassWithOptions{article}
+\ProvidesClass{pqsl}[2015/06/14 Printed QSL Cards]
+\LoadClass{article}
 
 \pagestyle{empty}
-\usepackage{graphicx}
-\usepackage{amsmath}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
 %\usepackage{fontspec}
-\usepackage[margin=0.0cm, marginratio=1:1]{geometry}
+\RequirePackage[margin=0.0cm, marginratio=1:1]{geometry}
 
 
 \setlength{\parindent}{0cm}
+\newlength{\frontpicw}
+\newlength{\frontpich}
 
 \newcommand\MYPIC[1]{\newcommand{\@MYPIC}{#1}}
 \newcommand\MYHAMORGPIC[1]{\newcommand{\@MYHAMORGPIC}{#1}}
@@ -37,7 +39,8 @@
 	\renewcommand{\@MODE}{#6}
 	\renewcommand{\@RST}{#7}
 
-	\ \vspace{0.5cm}
+	\
+  \vspace{0.5cm}
 
 	\hspace{0.5cm}
 	%%%BEGIN left upper Minipage with MYCALL and locator
@@ -95,11 +98,16 @@
 
 \newcommand{\@qslcardfront}[7][]{
 	\newpage
-	%That Hack with the Paperwith .799 is important to get an 
+	% That Hack with the Papersize calculation is important to get an 
 	% exact number of pics, the front needs to be smaller than 
 	% the paper
 	% \paperwidth \paperheight
-	\includegraphics[width=14.799cm,height=10.499cm]{\@MYPIC}
+	%\includegraphics[width=\paperwidth,height=\paperheight]{\@MYPIC}
+  \setlength{\frontpicw}{\paperwidth}
+  \addtolength{\frontpicw}{-0.01cm}
+  \setlength{\frontpich}{\paperheight}
+  \addtolength{\frontpich}{-0.01cm}
+	\includegraphics[width=\frontpicw,height=\frontpich]{\@MYPIC}
 }
 
 \newcommand{\@qslcardbothsides}[7][]{
@@ -124,4 +132,4 @@
 \DeclareOption{back}{
 	\renewcommand\qslcard\@qslcardback
 }
-\ProcessOptions
+\ProcessOptions\relax
